@@ -12,7 +12,7 @@ The [Tasker](http://tasker.dinglisch.net/) Android application allows users to s
 * *messages* containing an arbitrary text payload
 * *notifications* that display in the Android notification tray
 
-Using this library you can send messages and notifications ke from your Clojure programs instead.
+Using this library you can send messages and notifications from your Clojure programs instead.
 
 ## Usage
 
@@ -38,20 +38,24 @@ In both cases you will require the *device key* for the device you are sending t
 
 ### Obtaining a device key
 
-In order to obtain the AutoRemote key for your Android device you need to obtain the *personal URL* shown on the home activity of the AutoShare plugin:
+In order to obtain the AutoRemote key for your Android device you need to obtain the *personal URL* shown on the home activity of the AutoRemote plugin:
 
-1. Start the AutoRemote application on your Android device
-2. Record the personal URL having format `http://goog.gl/######`
+* Start the AutoRemote application on your Android device
+* Record the personal URL having format `http://goog.gl/######`
+
+#### Manually
 
 To obtain your device key **manually**:
 
-1. Visit your personal URL in a web browser
-2. After being redirected…
-3. Copy the value of **key** query parameter in the final URL
+* Visit your personal URL in a web browser
+* After being redirected…
+* Copy the value of **key** query parameter in the final URL
+
+#### Programmatically
 
 To obtain your device key **programmatically**:
 
-1. Call `(autoremote/url-to-key "http://goo.gl/######")`
+* Call `(autoremote/url-to-key "http://goo.gl/######")`
 
 ### Send a message
 
