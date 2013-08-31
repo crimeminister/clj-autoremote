@@ -16,6 +16,12 @@ Using this library you can send messages and notifications from your Clojure pro
 
 ## Usage
 
+Add this library to your project dependencies:
+
+```clojure
+:dependencies [[org.crimeminister/autoremote "0.1.0"]]
+```
+
 After you have required the `autoremote` namespace:
 
 ```clojure
