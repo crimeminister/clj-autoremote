@@ -126,7 +126,7 @@ If successful, these functions will return a [Ring](https://github.com/ring-cloj
 
 ```clojure
 (if (autoremote/sent? response)
-    (eat-icecream)
+    (eat-ice-cream)
     (eat-broccoli))
 ```
 or by manually inspecting the `:status` key of the response:
@@ -144,7 +144,7 @@ or by manually inspecting the `:status` key of the response:
 The library uses [Validateur](http://clojurevalidations.info/) to validate incoming data. If there is a problem with the function arguments you supply expect a Validateur-style response, e.g.
 
 ```clojure
-[false {:foo #{"description of problem with :foo" "another problem description}}]
+[false {:foo #{"description of problem with :foo" "another problem with :foo"}}]
 ```
 
 where the first vector entry is `false` to indicate an error, and the second entry is a map of keys from the map being validated with a corresponding set of error messages describing the problems that were detected.
