@@ -121,61 +121,6 @@ map."
                         ; choosing "Last Sender" in the devices list.
       })
 
-;; API ------
-
-(defn send-notification
-  "Send an AutoRemote notification."
-  [key & args]
-  {:pre [(valid-api-key? key)]}
-  (let [params (apply hash-map args)]
-    (if-let [errors (invalid? validate-notification-params params)]
-      ;; Validator fn returns [t/f {:attr #{"error desc"}}].
-      (validate-notification-params params)
-      @(http/post (url-notification key params)))))
-
-(defn send-message
-  "Send an AutoRemote message."
-  [key & args]
-  {:pre [(valid-api-key? key)]}
-  (let [params (apply hash-map args)]
-    (if-let [errors (invalid? validate-message-params params)]
-      ;; Validator fn returns [t/f {:attr #{"error desc"}}].
-      (validate-message-params params)
-      @(http/post (url-message key params)))))
-
-(defn url-message
-  "Return the URL used to send an AutoRemote message."
-  [key params]
-  {:pre [(valid-api-key? key) (map? params)]}
-  (prepare-url key url-path-message params))
-
-(defn url-notification
-  "Return the URL used to send an AutoRemote notification."
-  [key params]
-  {:pre [(valid-api-key? key) (map? params)]}
-  (prepare-url key url-path-notification params))
-
-(defn url-to-key
-  "Given an AutoRemote 'personal' URL, return the device key that it
-  maps to."
-  [url]
-  {:pre [(string? url)]}
-  ;; Request the URL and check the redirect (expected status:
-  ;; 301). The key should be contained in the Location header URL.
-  (let [response @(http/get url)]
-    (if (= 301 (:status response))
-      (let [location-string (get-in response [:headers :location])
-            location-url (uri/uri location-string)
-            key (uri/param location-url "key")]
-        key))))
-
-(defn sent?
-  "Given a Ring response, return true if message/notification was
-sent, false otherwise."
-  [result]
-  {:pre [(map? result)]}
-  (= 200 (:status result)))
-
 ;; ---------------
 ;; INTERNAL ------
 ;; ---------------
@@ -284,3 +229,58 @@ map."
    (all-keys-in message-keys)
    (presence-of :message)
    (numericality-of :ttl :only-integer true :gte 0 :allow-nil true)))
+
+;; API ------
+
+(defn url-message
+  "Return the URL used to send an AutoRemote message."
+  [key params]
+  {:pre [(valid-api-key? key) (map? params)]}
+  (prepare-url key url-path-message params))
+
+(defn send-message
+  "Send an AutoRemote message."
+  [key & args]
+  {:pre [(valid-api-key? key)]}
+  (let [params (apply hash-map args)]
+    (if-let [errors (invalid? validate-message-params params)]
+      ;; Validator fn returns [t/f {:attr #{"error desc"}}].
+      (validate-message-params params)
+      @(http/post (url-message key params)))))
+
+(defn url-notification
+  "Return the URL used to send an AutoRemote notification."
+  [key params]
+  {:pre [(valid-api-key? key) (map? params)]}
+  (prepare-url key url-path-notification params))
+
+(defn send-notification
+  "Send an AutoRemote notification."
+  [key & args]
+  {:pre [(valid-api-key? key)]}
+  (let [params (apply hash-map args)]
+    (if-let [errors (invalid? validate-notification-params params)]
+      ;; Validator fn returns [t/f {:attr #{"error desc"}}].
+      (validate-notification-params params)
+      @(http/post (url-notification key params)))))
+
+(defn url-to-key
+  "Given an AutoRemote 'personal' URL, return the device key that it
+  maps to."
+  [url]
+  {:pre [(string? url)]}
+  ;; Request the URL and check the redirect (expected status:
+  ;; 301). The key should be contained in the Location header URL.
+  (let [response @(http/get url)]
+    (if (= 301 (:status response))
+      (let [location-string (get-in response [:headers :location])
+            location-url (uri/uri location-string)
+            key (uri/param location-url "key")]
+        key))))
+
+(defn sent?
+  "Given a Ring response, return true if message/notification was
+sent, false otherwise."
+  [result]
+  {:pre [(map? result)]}
+  (= 200 (:status result)))
