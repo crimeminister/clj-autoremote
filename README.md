@@ -16,7 +16,7 @@ and to respond to them on the Android device by executing Tasker tasks. Using th
 Add this library to your project dependencies:
 
 ```clojure
-:dependencies [[org.crimeminister/autoremote "0.1.0"]]
+:dependencies [[org.crimeminister/autoremote "0.1.1"]]
 ```
 
 After you have required the `autoremote` namespace:
