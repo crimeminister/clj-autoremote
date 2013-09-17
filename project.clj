@@ -9,6 +9,6 @@
                  ;; Validations
                  [com.novemberain/validateur "1.5.0"]
                  ;; HTTP client/server
-                 [http-kit "2.1.10"]]
+                 [http-kit "2.1.11"]]
   :profiles {:dev {:dependencies [[org.clojure/tools.trace "0.7.6"]
                                   [clj-stacktrace "0.2.6"]]}})
