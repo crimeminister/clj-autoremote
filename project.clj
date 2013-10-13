@@ -10,5 +10,10 @@
                  [com.novemberain/validateur "1.5.0"]
                  ;; HTTP client/server
                  [http-kit "2.1.12"]]
-  :profiles {:dev {:dependencies [[org.clojure/tools.trace "0.7.6"]
-                                  [clj-stacktrace "0.2.6"]]}})
+  :profiles {:dev {:dependencies [[fipp "0.4.1"]
+                                  [org.clojure/tools.namespace "0.2.4"]
+                                  [org.clojure/tools.trace "0.7.6"]
+                                  [clj-stacktrace "0.2.6"]
+                                  [clj-time "0.6.0"]]
+                   :source-paths ["dev"]}}
+  :min-lein-version "2.3.0")
