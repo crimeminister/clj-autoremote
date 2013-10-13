@@ -1,4 +1,4 @@
-(defproject org.crimeminister/autoremote "0.1.1"
+(defproject org.crimeminister/autoremote "0.1.2"
   :description "Send AutoRemote messages/notifications to Android devices"
   :url "http://github.com/crimeminister/clj-autoremote/"
   :license {:name "Eclipse Public License"
