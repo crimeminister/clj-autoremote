@@ -16,13 +16,13 @@ and to respond to them on the Android device by executing Tasker tasks. Using th
 Add this library to your project dependencies:
 
 ```clojure
-:dependencies [[org.crimeminister/autoremote "0.1.1"]]
+:dependencies [[ca.clojureist/autoremote "0.1.2"]]
 ```
 
 After you have required the `autoremote` namespace:
 
 ```clojure
-(require '[org.crimeminister.autoremote :as autoremote])
+(require '[ca.clojureist.autoremote :as autoremote])
 ```
 
 you can send a message using

@@ -2,6 +2,7 @@
   "Tools for interactive development with the REPL. This file should
   not be included in a production build of the application."
   (:require
+   [ca.clojureist.autoremote :as autoremote]
    [clj-time.core :as time+]
    [clj-time.coerce :as time+coerce]
    [clj-time.format :as time+format]
@@ -17,7 +18,6 @@
    [clojure.tools.trace :refer :all]
    [fipp.edn :refer (pprint) :rename {pprint fipp}]
    [org.bovinegenius.exploding-fish :as uri]
-   [org.crimeminister.autoremote :as autoremote]
    [org.httpkit.client :as http]))
 
 (def system

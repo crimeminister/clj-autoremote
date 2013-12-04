@@ -1,6 +1,6 @@
-(ns org.crimeminister.autoremote
+(ns ca.clojureist.autoremote
   "Send AutoRemote messages and notifications to Android devices."
-  {:author "Robert Medeiros" :email "robert@crimeminister.org"}
+  {:author "Robert Medeiros" :email "robert@clojureist.ca"}
   (:require [clojure.set])
   (:require [org.bovinegenius.exploding-fish :as uri]
             [org.httpkit.client :as http]
