@@ -1,4 +1,4 @@
-(defproject ca.clojureist/autoremote "0.1.2"
+(defproject ca.clojureist/autoremote "0.1.3-SNAPSHOT"
   :description "Send AutoRemote messages/notifications to Android devices"
   :url "http://github.com/clojureist/clj-autoremote/"
   :license {:name "Eclipse Public License"
