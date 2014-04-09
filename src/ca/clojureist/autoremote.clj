@@ -189,23 +189,6 @@ a URL."
             [true {}]
             [false {attribute #{(str message)}}]))))))
 
-(defn- all-keys-in
-  "A validateur-conforming valiation function that ensures that all
-map keys are contained in a given set of keywords."
-  [allowed-keys & {:keys [unknown-message]
-                   :or {unknown-message "unknown key"}}]
-  {:pre [(set? allowed-keys)]}
-  (fn [m]
-    (let [map-keys (set (keys m))
-          ;; Remove all allowed keys from map keys and if there are
-          ;; any left over then that's a problem.
-          invalid-keys (clojure.set/difference map-keys allowed-keys)]
-      (if (empty? invalid-keys)
-        [true {}]
-        [false (reduce (fn [m key] (assoc m key #{unknown-message}))
-                       {}
-                       invalid-keys)]))))
-
 (def validate-notification-params
   "A 'validateur' validation function for 'notification' query
 parameter map."
