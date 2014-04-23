@@ -14,6 +14,6 @@
                                   [org.clojure/tools.namespace "0.2.4"]
                                   [org.clojure/tools.trace "0.7.8"]
                                   [clj-stacktrace "0.2.7"]
-                                  [clj-time "0.6.0"]]
+                                  [clj-time "0.7.0"]]
                    :source-paths ["dev"]}}
   :min-lein-version "2.3.0")
