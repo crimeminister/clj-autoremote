@@ -1,6 +1,6 @@
-(ns ca.clojureist.autoremote-test
+(ns ca.clojurist.autoremote-test
   (:require [clojure.test :refer :all]
-            [ca.clojureist.autoremote :refer :all]))
+            [ca.clojurist.autoremote :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

@@ -2,7 +2,7 @@
   "Tools for interactive development with the REPL. This file should
   not be included in a production build of the application."
   (:require
-   [ca.clojureist.autoremote :as autoremote]
+   [ca.clojurist.autoremote :as autoremote]
    [clj-time.core :as time+]
    [clj-time.coerce :as time+coerce]
    [clj-time.format :as time+format]
