@@ -3,7 +3,7 @@
   :url "http://github.com/clojurist-ca/clj-autoremote/"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.6.0"]
+  :dependencies [[org.clojure/clojure "1.7.0-alpha3"]
                  ;; URI processing
                  [org.bovinegenius/exploding-fish "0.3.4"]
                  ;; Validations
