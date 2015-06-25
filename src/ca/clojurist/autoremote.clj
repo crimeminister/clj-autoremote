@@ -29,8 +29,7 @@
   #"(?:https?:\/\/)?(?:[0-9a-z\.\-]+)\.(?:[a-z]{2,6})(?:[\/\w\.\-]*)*\/?")
 
 (def message-keys
-  "The set of allowed map keys in the message URL query parameter
-map."
+  "The set of allowed map keys in the message URL query parameter map."
   #{ ;; The text you want to send.
     :message
 
