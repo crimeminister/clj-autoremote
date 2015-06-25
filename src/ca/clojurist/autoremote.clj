@@ -31,22 +31,25 @@
 (def message-keys
   "The set of allowed map keys in the message URL query parameter
 map."
-  #{:message            ; The text you want to send.
+  #{ ;; The text you want to send.
+    :message
 
-    :target             ; Sets the Target on this message.
+    ;; (optional) Sets the Target on this message.
+    :target
 
-    :sender             ; The device that receives this message will
-                        ; reply to this device. Key when choosing
-                        ; "Last Sender" in the devices list).
+    ;; (optional) The device that receives this message will reply to
+    ;; this device. Key when choosing "Last Sender" in the devices list.
+    :sender
 
-    :channel            ; This sets the "Act as Sender" device's
-                        ; channel).
+    ;; (optional) This sets the "Act as Sender" device's channel.
+    :channel
 
-    :password           ; The password you have configured on your
-                        ; device.
+    ;; (optional) The password you have configured on your device.
+    :password
 
-    :ttl                ; Time in seconds AutoRemote will try to
-                        ; deliver the message for before giving up.
+    ;; (optional) Time in seconds AutoRemote will try to deliver the
+    ;; message for before giving up.
+    :ttl
     })
 
 (def notification-keys
