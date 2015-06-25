@@ -50,76 +50,160 @@ map."
     })
 
 (def notification-keys
-    "The set of allowed map keys in the notification URL query parameter map."
-    #{:title            ; The title of the notification
+  "The set of allowed map keys in the notification URL query parameter map."
+  #{ ;; The title of the notification.
+    :title
 
-      :text             ; The text of the notification
+    ;; The text of the notification.
+    :text
 
-      :sound            ; One of 10 notification sounds specified in
-                        ; the AutoRemote settings [1,10].
+    ;; One of 10 notification sounds specified in the AutoRemote
+    ;; settings [1,10].
+    :sound
 
-      :vibration        ; A list of integers representing a Tasker
-                        ; vibration pattern.
+    ;; A list of integers representing a Tasker vibration pattern.
+    :vibration
 
-      :url              ; Opened when the notification is touched
-                        ; (overridden by :action).
+    ;; Opened when the notification is touched (overridden
+    ;; by :action).
+    :url
 
-      :id               ; Notifications with different IDs will not
-                        ; overlap each other.
+    ;; Notifications with different IDs will not overlap each other.
+    :id
 
-      :action           ; The action (can be in the param1
-                        ; param2=:=command format) that will be
-                        ; executed on Notification touch.
+    ;; The action (can be in the param1 param2=:=command format) that
+    ;; will be executed on Notification touch.
+    :action
 
-      :icon             ; The notification icon URL. Will only work on
-                        ; Android 3.0 and above.
+    ;; The notification icon URL. Will only work on Android 3.0 and above.
+    :icon
 
-      :led              ; #RRGGBB, #AARRGGBB, 'red', 'blue', 'green',
-                        ; 'black', 'white', 'gray', 'cyan', 'magenta',
-                        ; 'yellow', 'lightgray', 'darkgray'.
+    ;; #RRGGBB, #AARRGGBB, 'red', 'blue', 'green', 'black', 'white',
+    ;; 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray'.
+    :led
 
-      :ledon            ; Time in milliseconds the LED will be on
-                        ; during blinking.
+    ;; Time in milliseconds the LED will be on during blinking.
+    :ledon
 
-      :ledoff           ; Time in milliseconds the LED will be off
-                        ; during blinking.
+    ;; Time in milliseconds the LED will be off during blinking.
+    :ledoff
 
-      :picture          ; Image shown on "Big Picture" notifications
-                        ; (Android 4.1+).
+    ;; Image shown on "Big Picture" notifications (Android 4.1+).
+    :picture
 
-      :message          ; Action on Receive, Action (can be in the
-                        ; param1 param2=:=command format) that will
-                        ; automatically execute when receiving this
-                        ; notification.
+    ;; Action on Receive, Action (can be in the param1
+    ;; param2=:=command format) that will automatically execute when
+    ;; receiving this notification.
+    :message
 
-      :action1          ; Action Button 1, AutoRemote action (can be
-                        ; in the param1 param2=:=command format) that
-                        ; will be available in the form of a button on
-                        ; Jelly Bean.
+    ;; Add Share button(s) on Jelly Bean notifications. Input any
+    ;; value to show these buttons. Leave blank otherwise.
+    :share
 
-      :action1name      ; Action Button Label 1, label for Action
-                        ; Button 1.
+    ;; Action Button 1, AutoRemote action (can be in the param1
+    ;; param2=:=command format) that will be available in the form of
+    ;; a button on Jelly Bean.
+    :action1
 
-      :action2          ; Action Button 2, AutoRemote action (can be
-                        ; in the param1 param2=:=command format) that
-                        ; will be available in the form of a button on
-                        ; Jelly Bean.
+    ;; Action Button Label 1, label for Action Button 1.
+    :action1name
 
-      :action2name      ; Action Button Label 2, label for Action
-                        ; Button 2.
+    ;; Go to AutoRemote Notification action in Tasker and click the
+    ;; Button 1 Icon field. There you can see the possible values for
+    ;; this field.
+    :action1icon
 
-      :action3          ; Action Button 3, AutoRemote action (can be
-                        ; in the param1 param2=:=command format) that
-                        ; will be available in the form of a button on
-                        ; Jelly Bean.
+    ;; Action Button 2, AutoRemote action (can be in the param1
+    ;; param2=:=command format) that will be available in the form of
+    ;; a button on Jelly Bean.
+    :action2
 
-      :action3name      ; Action Button Label 3, label for Action
-                        ; Button 3.
+    ;; Action Button Label 2, label for Action Button 2.
+    :action2name
 
-      :sender           ; Act as Sender, the device that receives this
-                        ; message will reply to this device key when
-                        ; choosing "Last Sender" in the devices list.
-      })
+    ;; Go to AutoRemote Notification action in Tasker and click the
+    ;; Button 2 Icon field. There you can see the possible values for
+    ;; this field.
+    :action2icon
+
+    ;; Action Button 3, AutoRemote action (can be in the param1
+    ;; param2=:=command format) that will be available in the form of
+    ;; a button on Jelly Bean.
+    :action3
+
+    ;; Action Button Label 3, label for Action Button 3.
+    :action3name
+
+    ;; Go to AutoRemote Notification action in Tasker and click the
+    ;; Button 3 Icon field. There you can see the possible values for
+    ;; this field.
+    :action3icon
+
+    ;; Fill in any value to make the notification persistent.
+    :persistent
+
+    ;; Go to AutoRemote Notification action in Tasker and click the
+    ;; Status Bar Icon field. There you can see the possible values for
+    ;; this field.
+    :statusbaricon
+
+    ;; Text to appear on the status bar when the notification is first
+    ;; created. Defaults to the :text field above.
+    :ticker
+
+    ;; Fill any value to make the notification dismiss itself when
+    ;; touched.
+    :dismissontouch
+
+    ;; Values ranging from -2 (min priority) to 2 [max priority].
+    :priority
+
+    ;; Number to appear on the lower right of the Notification.
+    :number
+
+    ;; Small string to appear on the lower right of the Notification;;
+    ;; overrides :number.
+    :contentinfo
+
+    ;; Sub Text of the notification.
+    :subtext
+
+    ;; Max value the progress can have.
+    :maxprogress
+
+    ;; Value from 0 to the value you set in :maxprogress.
+    :progress
+
+    ;; If set, an indeterminate progress bar will be used.
+    :indeterminateprogress
+
+    ;; AutoRemote Message that will be executed when the notification
+    ;; is dismissed.
+    :actionondismiss
+
+    ;; Fill any value to cancel notification with the given id. Must
+    ;; fill id to cancel; all other settings besides id will be
+    ;; ignored.
+    :cancel
+
+    ;; (optional) The device that receives this message will reply to
+    ;; this device key when choosing "Last Sender" in the devices list.
+    :sender
+
+    ;; (optional) The password you have configured on your device.
+    :password
+
+    ;; (optional) Time in seconds AutoRemote will try to deliver the
+    ;; message for before giving up.
+    :ttl
+
+    ;; (optional) If the receiving device is unreachable, only one
+    ;; message in a message group will be delivered. Useful you if
+    ;; e.g. leave a device in airplane mode at night and only want to
+    ;; receive the last of the messages that were sent during that
+    ;; time. Leave blank to deliver all messages.
+    :collapseKey
+    })
 
 ;; ---------------
 ;; INTERNAL ------
