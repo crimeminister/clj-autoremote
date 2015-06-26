@@ -289,6 +289,7 @@ parameter map."
    (format-of :led :format #"\b(?:red|blue|green|black|white|gray|cyan|magenta|yellow|lightgray|darkgray|#\d{6}|#\d{8})\b" :allow-blank true :allow-nil true)
    (numericality-of :ledon :only-integer true :gte 0 :allow-nil true)
    (numericality-of :ledoff :only-integer true :gte 0 :allow-nil true)
+   (numericality-of :number :only-integer true :gt 0 :allow-nil true)
    (url-of :picture :allow-nil true)))
 
 (def validate-message-params
