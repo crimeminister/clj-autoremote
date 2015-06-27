@@ -275,6 +275,14 @@ a URL."
             [true {}]
             [false {attribute #{(str message)}}]))))))
 
+(def vibration-format
+  "A regular expression describing allowed notification vibration patterns."
+  #"^(?:[0-9]+\,?)+$")
+
+(def led-format
+  "A regular expression describing allowed notification LED colour specification."
+  #"\b(?:red|blue|green|black|white|gray|cyan|magenta|yellow|lightgray|darkgray|#\d{6}|#\d{8})\b")
+
 (def validate-notification-params
   "A 'validateur' validation function for 'notification' query
 parameter map."
@@ -283,14 +291,18 @@ parameter map."
    (presence-of :title)
    (presence-of :text)
    (numericality-of :sound :only-integer true :gte 1 :lte 10 :allow-nil true)
-   (format-of :vibration :format #"^(?:[0-9]+\,?)+$" :allow-blank true :allow-nil true)
+   (format-of :vibration :format vibration-format :allow-blank true :allow-nil true)
    (url-of :url :allow-nil true)
    (url-of :icon :allow-nil true)
-   (format-of :led :format #"\b(?:red|blue|green|black|white|gray|cyan|magenta|yellow|lightgray|darkgray|#\d{6}|#\d{8})\b" :allow-blank true :allow-nil true)
+   (format-of :led :format led-format :allow-blank true :allow-nil true)
    (numericality-of :ledon :only-integer true :gte 0 :allow-nil true)
    (numericality-of :ledoff :only-integer true :gte 0 :allow-nil true)
+   (url-of :picture :allow-nil true)
+   (numericality-of :priority :only-integer true :gte -2 :lte 2 :allow-nil true)
    (numericality-of :number :only-integer true :gt 0 :allow-nil true)
-   (url-of :picture :allow-nil true)))
+   (numericality-of :maxprogress :only-integer true :gte 0 :allow-nil true)
+   (numericality-of :progress :only-integer true :gte 0 :allow-nil true)
+   (numericality-of :ttl :only-integer true :gte 0 :allow-nil true)))
 
 (def validate-message-params
   "A 'validateur' validation function for 'message' query parameter
